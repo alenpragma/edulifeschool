@@ -16,7 +16,6 @@ export default async function HomePage() {
       <StartSection />
       <FeaturesSection />
       <CoursesSection />
-  
     </div>
   );
 }

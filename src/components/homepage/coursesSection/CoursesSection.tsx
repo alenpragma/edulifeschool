@@ -3,7 +3,7 @@
 import MainContainer from "@/components/container/MainContainer";
 import HeadingOne from "@/components/shared/heading/HeadingOne";
 import { Images } from "@/lib/store/images";
-import { MapPin, Clock } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -73,7 +73,7 @@ export function CoursesSection() {
     {
       name: "Paul Groves",
       role: "Math Teacher",
-      color: "bg-gradient-to-br from-accent to-accent/80",
+      color: "bg-gradient-to-br from-green-500 to-secondary/80",
     },
   ];
 
@@ -172,7 +172,7 @@ export function CoursesSection() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-8 group-hover:shadow-3xl sm:border-8">
                     <img
-                      src={`/diverse-teacher-classroom.png?height=300&width=300&query=teacher ${i}`}
+                      src={`https://img.lovepik.com/free-png/20211110/lovepik-male-teacher-image-png-image_400764526_wh1200.png`}
                       alt={teacher.name}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -183,10 +183,10 @@ export function CoursesSection() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full transition-transform duration-700 group-hover:translate-x-full" />
                   <h3 className="relative text-lg font-black transition-transform duration-300 group-hover:scale-110 sm:text-xl">
-                    {teacher.name}
+                    Mr.Alex
                   </h3>
                   <p className="relative text-sm font-medium opacity-95">
-                    {teacher.role}
+                    English Teacher
                   </p>
                 </div>
               </div>

@@ -33,9 +33,9 @@ type NavItem = {
 export const navItems: NavItem[] = [
   { id: 1, pathName: "/", label: "Home" },
   { id: 2, pathName: "/about", label: "About" },
-  { id: 3, pathName: "/blog", label: "resort" },
-  { id: 4, pathName: "/event", label: "event" },
-  { id: 5, pathName: "/contact", label: "contact" },
+  { id: 3, pathName: "/blog", label: "Blog" },
+  { id: 4, pathName: "/event", label: "Event" },
+  { id: 5, pathName: "/contact", label: "Contact" },
 ];
 
 function useMediaQuery(query: string): boolean {

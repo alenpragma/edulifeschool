@@ -157,7 +157,7 @@ export function Footer() {
                   className="group aspect-square overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:z-10"
                 >
                   <img
-                    src={`/school-life-.jpg?height=80&width=80&query=school life ${i}`}
+                    src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSumMn9ON74_KV2xb6ZiX5E2Yh9F8Up8g4oLQ&s`}
                     alt="Gallery"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-125"
                   />

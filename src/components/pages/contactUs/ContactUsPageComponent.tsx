@@ -32,7 +32,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Main Campus",
-    detail: "Armbag, Santinagar",
+    detail: "শান্তিনগর রোড, ব্র্যাক অফিস সংলগ্ন, খাগড়াছড়ি সদর, খাগড়াছড়ি",
     description: "Khagrachari Sadar, Bangladesh",
     color: "from-orange-500 to-red-500",
   },
@@ -47,25 +47,18 @@ const contactInfo = [
 
 const campuses = [
   {
-    name: "Khagrachari Campus (Main)",
-    address: "Armbag, Santinagar, Khagrachari Sadar, Bangladesh",
+    name: "খাগড়াছড়ি ক্যাম্পাস",
+    address: "শান্তিনগর রোড, ব্র্যাক অফিস সংলগ্ন, খাগড়াছড়ি সদর, খাগড়াছড়ি",
     phone: "01519-575226",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4!2d91.9793!3d23.1194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA3JzA5LjgiTiA5McKwNTgnNDUuNSJF!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd",
+      "https://www.google.com/maps/search/%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%97%E0%A6%B0+%E0%A6%B0%E0%A7%8B%E0%A6%A1+%E0%A6%96%E0%A6%BE%E0%A6%97%E0%A7%9C%E0%A6%BE%E0%A6%9B%E0%A7%9C%E0%A6%BF+%E0%A6%B8%E0%A6%A6%E0%A6%B0/@23.0984034,91.9544922,6101m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D",
   },
   {
-    name: "Matiranga Campus",
-    address: "Nasirabad Properties, Khulshi, Chittagong, Bangladesh",
-    phone: "01888-000000",
+    name: "লক্ষ্মীছড়ি ক্যাম্পাস",
+    address: " নারী কল্যাণ সমিতি ভবন, উপজেলা চত্ত্বর, লক্ষ্মীছড়ি, খাগড়াছড়ি ",
+    phone: " 01511-899175",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.78913456789!2d91.808!3d22.356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDIxJzIxLjYiTiA5McKwNDgnMjguOCJF!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd",
-  },
-  {
-    name: "Guimara Campus",
-    address: "Mirpur DOHS, Dhaka, Bangladesh",
-    phone: "01999-111111",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.0!2d90.3!3d23.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ4JzAwLjAiTiA5MMKwMTgnMDAuMCJF!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd",
+      "https://www.google.com/maps/place/Khagrapur+Mohila+Kalyan+Samity/@23.1238268,91.9920645,763m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3752ef54f96075cd:0xabac4cb0df80c419!8m2!3d23.1238219!4d91.9946394!16s%2Fg%2F11fwn3d2x4?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D",
   },
 ];
 
