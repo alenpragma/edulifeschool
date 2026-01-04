@@ -99,7 +99,7 @@ export function FeaturesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-12">
+    <section ref={sectionRef} className="bg-white py-5">
       <MainContainer>
         <div
           className={`mb-12 text-center sm:mb-16 transition-all duration-700 ${

@@ -1,3 +1,4 @@
+import BannerBlog from "@/components/homepage/BannerBlog/BannerBlog";
 import { CoursesSection } from "@/components/homepage/coursesSection/CoursesSection";
 import { FeaturesSection } from "@/components/homepage/featureSection/FeaturesSection";
 import { HeroSection } from "@/components/homepage/HeroSection/HeroSection";
@@ -13,6 +14,7 @@ export default async function HomePage() {
   return (
     <div className="bg-white overflow-hidden">
       <HeroSection />
+      <BannerBlog />
       <StartSection />
       <FeaturesSection />
       <CoursesSection />
