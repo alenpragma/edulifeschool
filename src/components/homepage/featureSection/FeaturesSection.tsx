@@ -6,12 +6,12 @@ import HeadingOne from "@/components/shared/heading/HeadingOne";
 import HeadingTwo from "@/components/shared/heading/HeadingTwo";
 import { Images } from "@/lib/store/images";
 import {
-  Puzzle,
-  MonitorPlay,
-  Laptop,
-  HousePlus,
-  Mic,
   BarChart3,
+  HousePlus,
+  Laptop,
+  Mic,
+  MonitorPlay,
+  Puzzle,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -191,18 +191,18 @@ export function FeaturesSection() {
             </div>
           </div>
           <div
-            className={`order-1 lg:order-2 transition-all duration-700 delay-500 ${
+            className={`order-1 lg:order-2 transition-all duration-700 delay-500 h-full ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-10"
             }`}
           >
-            <div className="group relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-105">
+            <div className="group relative h-full overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <Image
                 src={Images.student_laptop}
                 alt="Student with laptop"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[]1.02]"
               />
             </div>
           </div>

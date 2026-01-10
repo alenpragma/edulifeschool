@@ -1,9 +1,7 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface ModalContainerProps {
   modalOpen: boolean;
@@ -19,6 +17,9 @@ export function ModalContainer({
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogContent className="sm:max-w-[425px]">
+        <VisuallyHidden>
+          <DialogTitle>Mobile Navigation</DialogTitle>
+        </VisuallyHidden>
         <div>{children}</div>
       </DialogContent>
     </Dialog>

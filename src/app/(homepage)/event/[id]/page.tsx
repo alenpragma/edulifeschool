@@ -1,0 +1,19 @@
+import { Metadata } from "next";
+import EventComponent from "./EventComponent";
+
+export const metadata: Metadata = {
+  title: "Edulife It School | Event",
+  description: "Edulife It School",
+};
+
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function EventPage({ params }: PageProps) {
+  const { id } = await params;
+
+  return <EventComponent />;
+}

@@ -60,10 +60,10 @@ export default function BannerBlog() {
               className={cn(
                 "group relative overflow-hidden rounded-xl p-4 text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2",
                 index === 0 &&
-                  "bg-gradient-to-br from-orange-400 to-orange-500",
-                index === 1 && "bg-gradient-to-br from-cyan-400 to-cyan-500",
+                  "bg-gradient-to-br from-[#062389] to-[#3a4d91]",
+                index === 1 && "bg-gradient-to-br from-[#0b598d] to-[#0588E1]",
                 index === 2 &&
-                  " bg-gradient-to-br from-yellow-400 to-yellow-500"
+                  " bg-gradient-to-br from-[#062389] to-[#3a4d91]"
               )}
             >
               <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

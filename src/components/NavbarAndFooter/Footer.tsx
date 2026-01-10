@@ -1,11 +1,24 @@
 "use client";
 
 import { Images } from "@/lib/store/images";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { SocialLinks } from "@/types/generalType/generalType";
+import { IGalleryItem } from "@/types/generalType/iamgeGellery";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 
-export function Footer() {
+export function Footer({
+  socialLink,
+  imageGallery,
+}: {
+  socialLink: SocialLinks;
+  imageGallery: IGalleryItem[];
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const footerRef = useRef<HTMLElement>(null);
 
@@ -32,27 +45,35 @@ export function Footer() {
 
   const socialIcons = [
     {
-      Icon: Facebook,
+      Icon: FaFacebook,
       color: "hover:text-blue-600",
       bgColor: "hover:bg-blue-50",
+      link: socialLink.facebook || "",
     },
     {
-      Icon: Twitter,
+      Icon: FaXTwitter,
       color: "hover:text-blue-400",
       bgColor: "hover:bg-blue-50",
+      link: socialLink.twitter || "",
     },
     {
-      Icon: Instagram,
+      Icon: FaInstagram,
       color: "hover:text-pink-600",
       bgColor: "hover:bg-pink-50",
+      link: socialLink.instagram || "",
     },
-    { Icon: Youtube, color: "hover:text-red-600", bgColor: "hover:bg-red-50" },
+    {
+      Icon: FaYoutube,
+      color: "hover:text-red-600",
+      bgColor: "hover:bg-red-50",
+      link: socialLink.youtube || "",
+    },
   ];
 
   return (
     <footer
       ref={footerRef}
-      className="bg-gradient-to-b from-white to-slate-50 pt-16 pb-8 sm:pt-20 lg:pt-24"
+      className="bg-gradient-to-b from-white to-slate-50 py-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-border pb-12 sm:grid-cols-2 sm:gap-10 sm:pb-16 lg:grid-cols-4 lg:gap-12">
@@ -77,13 +98,15 @@ export function Footer() {
               quality education to children and students.
             </p>
             <div className="flex gap-3">
-              {socialIcons.map(({ Icon, color, bgColor }, i) => (
-                <div
-                  key={i}
-                  className={`flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted-foreground transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg ${color} ${bgColor}`}
-                >
-                  <Icon className="h-5 w-5" />
-                </div>
+              {socialIcons.map(({ Icon, color, bgColor, link }, i) => (
+                <a key={i} href={`${link}`} target="_blank">
+                  {" "}
+                  <div
+                    className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-muted text-muted-foreground transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg ${color} ${bgColor}`}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+                </a>
               ))}
             </div>
           </div>
@@ -151,15 +174,18 @@ export function Footer() {
           >
             <h4 className="mb-4 font-bold text-foreground sm:mb-6">Gallery</h4>
             <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {imageGallery.map((item) => (
                 <div
-                  key={i}
+                  key={item.id}
                   className="group aspect-square overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:z-10"
                 >
-                  <img
-                    src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSumMn9ON74_KV2xb6ZiX5E2Yh9F8Up8g4oLQ&s`}
+                  <Image
+                    src={item.url}
                     alt="Gallery"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-125"
+                    width={300}
+                    height={300}
+                    loader={({ src }) => src}
                   />
                 </div>
               ))}
@@ -168,7 +194,7 @@ export function Footer() {
         </div>
 
         <div
-          className={`mt-6 text-center text-xs font-medium text-muted-foreground transition-all duration-700 delay-400 sm:mt-8 ${
+          className={`mt-4 text-center text-xs font-medium text-muted-foreground transition-all duration-700 delay-400 sm:mt-8 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >

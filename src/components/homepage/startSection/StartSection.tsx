@@ -9,7 +9,7 @@ export function StartSection() {
   ];
 
   return (
-    <section className="border-y border-white/10 py-12 ">
+    <section className="border-y border-white/10 py-12">
       <MainContainer>
         <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-8 md:text-left">
           {stats.map((stat, i) => (

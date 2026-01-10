@@ -1,88 +1,83 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { contactUsSchema } from "@/components/schema/contactUs/contactUs";
-import { z } from "zod";
 import { GenericForm, GenericFormRef } from "@/components/Form/GenericForm";
-import { TextField } from "@/components/Form/fields/TextField";
-import { TextareaField } from "@/components/Form/fields/TextAreaField";
 import { SubmitButton } from "@/components/Form/fields/SubmitButton";
+import { TextareaField } from "@/components/Form/fields/TextAreaField";
+import { TextField } from "@/components/Form/fields/TextField";
 import MainContainer from "@/components/container/MainContainer";
-
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Phone Number",
-    detail: "01519-575226",
-    description: "Mon-Sat: 9:00 AM - 5:00 PM",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Mail,
-    title: "Email Address",
-    detail: "edulifeitschool@gmail.com",
-    description: "Send us your query anytime",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: MapPin,
-    title: "Main Campus",
-    detail: "শান্তিনগর রোড, ব্র্যাক অফিস সংলগ্ন, খাগড়াছড়ি সদর, খাগড়াছড়ি",
-    description: "Khagrachari Sadar, Bangladesh",
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    detail: "Mon - Sat: 9:00 AM - 5:00 PM",
-    description: "Sunday: Closed",
-    color: "from-green-500 to-teal-500",
-  },
-];
-
-const campuses = [
-  {
-    name: "খাগড়াছড়ি ক্যাম্পাস",
-    address: "শান্তিনগর রোড, ব্র্যাক অফিস সংলগ্ন, খাগড়াছড়ি সদর, খাগড়াছড়ি",
-    phone: "01519-575226",
-    mapUrl:
-      "https://www.google.com/maps/search/%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%97%E0%A6%B0+%E0%A6%B0%E0%A7%8B%E0%A6%A1+%E0%A6%96%E0%A6%BE%E0%A6%97%E0%A7%9C%E0%A6%BE%E0%A6%9B%E0%A7%9C%E0%A6%BF+%E0%A6%B8%E0%A6%A6%E0%A6%B0/@23.0984034,91.9544922,6101m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D",
-  },
-  {
-    name: "লক্ষ্মীছড়ি ক্যাম্পাস",
-    address: " নারী কল্যাণ সমিতি ভবন, উপজেলা চত্ত্বর, লক্ষ্মীছড়ি, খাগড়াছড়ি ",
-    phone: " 01511-899175",
-    mapUrl:
-      "https://www.google.com/maps/place/Khagrapur+Mohila+Kalyan+Samity/@23.1238268,91.9920645,763m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3752ef54f96075cd:0xabac4cb0df80c419!8m2!3d23.1238219!4d91.9946394!16s%2Fg%2F11fwn3d2x4?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D",
-  },
-];
+import { contactUsSchema } from "@/components/schema/contactUs/contactUs";
+import { Button } from "@/components/ui/button";
+import axiosInstance from "@/lib/axios/AxiosInstance";
+import { contactResponse } from "@/types/generalType/contactType";
+import { SiteSettingsData } from "@/types/generalType/generalType";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { z } from "zod";
 
 type contactUsFormType = z.infer<typeof contactUsSchema>;
 
 const initialValues: contactUsFormType = {
   name: "",
   email: "",
+  phone: "",
   subject: "",
   message: "",
 };
 
-export default function ContactUsPageComponent() {
+export default function ContactUsPageComponent({
+  data,
+}: {
+  data: SiteSettingsData;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCampus, setSelectedCampus] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<GenericFormRef<contactUsFormType>>(null);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (
+      data: contactUsFormType | React.FormEvent<HTMLFormElement>
+    ) => {
+      const response = await axiosInstance.post<contactResponse>(
+        `/contact-form`,
+        data
+      );
+      return response.data;
+    },
+    onSuccess: (data: contactResponse) => {
+      if (data.success === true) {
+        formRef.current?.reset();
+        toast.success(data.message || "Successfully send message", {
+          position: "top-center",
+          style: {
+            width: "fit-content",
+          },
+        });
+      }
+    },
+    onError: (err: AxiosError<{ message: string }>) => {
+      toast.error(err.message || "Something went wrong");
+    },
+  });
+
   const handleSubmit = (
     data: contactUsFormType | React.FormEvent<HTMLFormElement>
   ) => {
     if ("preventDefault" in data) return;
-    console.log("contact us Data:", data);
+    const payload = {
+      ...data,
+    };
+    if (!payload.email) {
+      delete payload.email;
+    }
+
+    mutate(payload);
   };
 
+  const { contact, campuses } = data || {};
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -104,14 +99,44 @@ export default function ContactUsPageComponent() {
     };
   }, []);
 
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: contact[0].name,
+      detail: contact[0].value,
+      description: "Mon-Sat: 9:00 AM - 5:00 PM",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: Mail,
+      title: contact[1].name,
+      detail: contact[1].value,
+      description: "Send us your query anytime",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      icon: MapPin,
+      title: contact[2].name,
+      detail: contact[2].value,
+      description: "Khagrachari Sadar, Bangladesh",
+      color: "from-orange-500 to-red-500",
+    },
+    {
+      icon: Clock,
+      title: contact[4].name,
+      detail: contact[4].value,
+      description: "Sunday: Closed",
+      color: "from-green-500 to-teal-500",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background font-sans">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 py-12">
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 mt-8">
         <div className="absolute top-20 right-0 h-48 w-48 rounded-full bg-secondary/20 blur-3xl animate-[float_8s_ease-in-out_infinite]" />
         <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl animate-[float_6s_ease-in-out_infinite]" />
-
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <MainContainer className="py-8">
           <div className="text-center">
             <h1 className="text-4xl font-black leading-tight text-foreground sm:text-5xl lg:text-6xl text-balance">
               Get In{" "}
@@ -125,11 +150,11 @@ export default function ContactUsPageComponent() {
               educational path for your child.
             </p>
           </div>
-        </div>
+        </MainContainer>
       </section>
 
       {/* Contact Info Cards */}
-      <section ref={sectionRef} className="py-12">
+      <section ref={sectionRef} className="py-5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {contactInfo.map((info, index) => (
@@ -220,6 +245,14 @@ export default function ContactUsPageComponent() {
                     />
                   </div>
                   <TextField
+                    name="phone"
+                    label="Phone Number"
+                    type="number"
+                    countryLog={true}
+                    placeholder="Enter Phone"
+                    inputClass="w-full pl-12"
+                  />
+                  <TextField
                     name="subject"
                     label="Subject"
                     placeholder="What's this about?"
@@ -231,7 +264,10 @@ export default function ContactUsPageComponent() {
                     placeholder="Enter message"
                     // inputClass="contactus_form"
                   />
-                  <SubmitButton label="Send Message" width="full" />{" "}
+                  <SubmitButton
+                    label={isPending ? "Sending..." : "Send Message"}
+                    width="full"
+                  />{" "}
                 </div>
               </GenericForm>
             </div>
@@ -240,7 +276,7 @@ export default function ContactUsPageComponent() {
             <div className="flex flex-col gap-5">
               <div className="rounded-2xl bg-card shadow-xl overflow-hidden flex-1 min-h-[200px]">
                 <iframe
-                  src={campuses[selectedCampus].mapUrl}
+                  src={campuses[selectedCampus].googleMapUrl || ""}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

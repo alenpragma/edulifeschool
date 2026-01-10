@@ -2,11 +2,14 @@
 
 import MainContainer from "@/components/container/MainContainer";
 import CustomButton from "@/components/shared/submitButton/CustomButton";
-import { Images } from "@/lib/store/images";
+import { Hero } from "@/types/generalType/generalType";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-export function HeroSection() {
+export function HeroSection({ heroData }: { heroData: Hero }) {
+  const { heroImage, subtitle, title } = heroData || {};
+  console.log("heroimage", heroImage);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -50,7 +53,7 @@ export function HeroSection() {
             }`}
           >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-foreground text-balance">
-              CREATING FUTURE LEADERS
+              {title}
             </h1>
 
             <p
@@ -60,11 +63,7 @@ export function HeroSection() {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              এডুলাইফ আইটি স্কুল পাহাড়ে প্রযুক্তির বাতিঘর। আমরা বাচ্চাদের
-              প্রয়োজনীয় লাইফ স্কিল শেখানোর মাধ্যমে তাদের প্রযুক্তি ও উদ্ভাবনে
-              সফল করে গড়ে তুলি। জাতীয় শিক্ষাক্রম ও আধুনিক প্রযুক্তির সমন্বয়ে
-              গঠিত আমাদের স্কুলে পাঠ্যক্রমের পাশাপাশি কোডিং, স্পোকেন ইংলিশ,
-              কম্পিউটার ফাউন্ডেশন এবং আইসিটির প্রতি বিশেষ গুরুত্ব দেওয়া হয়।
+              {subtitle}
             </p>
 
             <div
@@ -74,7 +73,9 @@ export function HeroSection() {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <CustomButton text="Learn More" />
+              <Link href="/contact">
+                <CustomButton text="Contact" />
+              </Link>
             </div>
           </div>
 
@@ -88,12 +89,13 @@ export function HeroSection() {
           >
             <div className="relative z-10 mx-auto md:max-w-[80%] w-full overflow-hidden rounded-3xl border-8 sm:border-12 border-white shadow-2xl transition-all duration-500 hover:scale-105 hover:rotate-1">
               <Image
-                src={Images.hero}
-                alt="EduLife Students"
+                src={heroImage}
+                alt="img"
                 className="w-full h-auto object-cover"
                 width={600}
                 height={600}
                 priority
+                loader={({ src }) => src}
               />
             </div>
 

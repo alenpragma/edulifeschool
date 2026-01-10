@@ -1,28 +1,22 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { config } from "@/config";
 import { Images } from "@/lib/store/images";
 import { cn } from "@/lib/utils";
+import { ContactItem } from "@/types/generalType/generalType";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiMail } from "react-icons/ci";
+import { ImLocation2 } from "react-icons/im";
 import { IoIosCall } from "react-icons/io";
 import { LuMenu } from "react-icons/lu";
 import MainContainer from "../container/MainContainer";
-import { ImLocation2 } from "react-icons/im";
 
 type NavItem = {
   id: number;
@@ -55,7 +49,12 @@ function useMediaQuery(query: string): boolean {
   return matches;
 }
 
-const Navbar = () => {
+const Navbar = ({
+  contactItemSiteSetting,
+}: {
+  contactItemSiteSetting: ContactItem[];
+}) => {
+  console.log(contactItemSiteSetting);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -99,12 +98,40 @@ const Navbar = () => {
       <div className="bg-main">
         <MainContainer className="flex md:flex-row flex-col justify-between md:items-center items-start text-white py-2 text-[12px]">
           <div className="flex items-center gap-2">
-            <IoIosCall /> <CiMail />
-            <span>edulifeitschool@gmail.com</span>
+            {(() => {
+              const phoneItem = contactItemSiteSetting.find(
+                (item) => item.name === "Phone"
+              )?.value;
+              const emailItem = contactItemSiteSetting.find(
+                (item) => item.name === "Email"
+              )?.value;
+              return (
+                <>
+                  {phoneItem && (
+                    <a href={`tel:${phoneItem}`}>
+                      <IoIosCall />
+                    </a>
+                  )}
+                  {emailItem && (
+                    <a
+                      href={`mailto:${emailItem}`}
+                      className="flex items-center gap-1"
+                    >
+                      <CiMail />
+                      <span>{emailItem}</span>
+                    </a>
+                  )}
+                </>
+              );
+            })()}
           </div>
+
           <p className="flex items-center gap-2">
             <ImLocation2 />
-            Arambag, Shantinagar, Khagrachari Sadar
+            {
+              contactItemSiteSetting.find((item) => item.name === "Address")
+                ?.value
+            }
           </p>
         </MainContainer>
       </div>
