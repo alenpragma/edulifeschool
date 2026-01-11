@@ -28,10 +28,10 @@ export default async function HomePage() {
       <HeroSection heroData={data.hero} />
       <BannerBlog />
       <StartSection testimonials={data.testimonials} />
-      <ImageGallery images={images} />
-      <OpeningHours openingHours={data.openingHours} />
       <FeaturesSection />
       <CoursesSection teacherData={teacherData} events={events} />
+      <ImageGallery images={images} />
+      <OpeningHours openingHours={data.openingHours} />
     </div>
   );
 }
@@ -41,3 +41,6 @@ export default async function HomePage() {
 // event dynamic kore korte hobe - done
 // gallery image click korle modal view hobe
 // footer er galery image ta slice kore korte hobe - done
+
+// gallery and routine sobar niche chole jabe
+// teacher section opore utbe and event ta niche chole jabe then gallery and routine ta niche jabe

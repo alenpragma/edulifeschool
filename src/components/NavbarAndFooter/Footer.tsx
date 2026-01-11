@@ -11,6 +11,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+import MainContainer from "../container/MainContainer";
 
 export function Footer({
   socialLink,
@@ -73,9 +74,9 @@ export function Footer({
   return (
     <footer
       ref={footerRef}
-      className="bg-gradient-to-b from-white to-slate-50 py-5"
+      className="bg-gradient-to-b from-white to-slate-50 py-5 pt-6"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <MainContainer>
         <div className="grid gap-8 border-b border-border pb-12 sm:grid-cols-2 sm:gap-10 sm:pb-16 lg:grid-cols-4 lg:gap-12">
           <div
             className={`lg:col-span-1 transition-all duration-700 ${
@@ -198,9 +199,10 @@ export function Footer({
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          &copy; 2025-{new Date().getFullYear()} edulifeitschool.com. All Rights Reserved.
+          &copy; 2025-{new Date().getFullYear()} edulifeitschool.com. All Rights
+          Reserved.
         </div>
-      </div>
+      </MainContainer>
     </footer>
   );
 }
