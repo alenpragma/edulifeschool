@@ -42,33 +42,6 @@ export function CoursesSection({
     };
   }, []);
 
-  // const events = [
-  //   {
-  //     title: "Annual Cultural Programme",
-  //     date: "12",
-  //     month: "September",
-  //     time: "8:00 AM - 10:00 PM",
-  //   },
-  //   {
-  //     title: "World Kids Day",
-  //     date: "12",
-  //     month: "September",
-  //     time: "8:00 AM - 10:00 PM",
-  //   },
-  //   {
-  //     title: "World Drawing Day",
-  //     date: "17",
-  //     month: "October",
-  //     time: "8:00 AM - 10:00 PM",
-  //   },
-  //   {
-  //     title: "Annual Cultural Programme",
-  //     date: "21",
-  //     month: "November",
-  //     time: "8:00 AM - 10:00 PM",
-  //   },
-  // ];
-
   return (
     <section
       id="event"
@@ -76,65 +49,7 @@ export function CoursesSection({
       className="bg-gradient-to-b from-slate-50 to-white py-5 scroll-mt-28"
     >
       <MainContainer>
-        <div
-          className={`mb-12 text-center sm:mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <HeadingOne text="আমাদের ইভেন্ট" />
-          <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" />
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-          {events.map((event, i) => (
-            <Link href={`/event/${event.id}`} key={i} prefetch={true}>
-              <div
-                className={`group flex flex-row items-center overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 p-3 gap-5 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <div className="relative  shrink-0 overflow-hidden w-28 h-28 rounded-lg">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" />
-                  <Image
-                    src={event.icon}
-                    alt="img"
-                    className="h-full w-full transition-transform duration-700 group-hover:scale-110 aspect-square rounded-lg"
-                    width={500}
-                    height={500}
-                    loader={({ src }) => src}
-                  />
-                </div>
-                <div className="flex flex-1 flex-col justify-between sm:flex-row sm:items-center">
-                  <div className="mb-4 sm:mb-0">
-                    <h3 className="text-base font-bold text-foreground transition-colors duration-300 group-hover:text-primary sm:text-lg">
-                      {event.title}
-                    </h3>
-                    <div className="mt-2 space-y-1 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
-                        <Clock className="h-3 w-3" /> {event.time}
-                      </div>
-                      <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
-                        <MapPin className="h-3 w-3" />
-                        <span className="line-clamp-1">{event.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
-                        <FaCalendar className="h-3 w-3" />
-                        <span className="line-clamp-1">
-                          {new Date(event.date).toDateString()}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-20 sm:mt-24 lg:mt-32">
+        <div>
           <div
             className={`mb-12 text-center sm:mb-16 transition-all duration-700 delay-300 ${
               isVisible
@@ -182,6 +97,66 @@ export function CoursesSection({
                   </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-8">
+          <div
+            className={`mb-12 text-center sm:mb-16 transition-all duration-700 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
+            <HeadingOne text="আমাদের ইভেন্ট" />
+            <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+            {events.map((event, i) => (
+              <Link href={`/event/${event.id}`} key={i} prefetch={true}>
+                <div
+                  className={`group flex flex-row items-center overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 p-3 gap-5 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-10"
+                  }`}
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                >
+                  <div className="relative  shrink-0 overflow-hidden w-28 h-28 rounded-lg">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" />
+                    <Image
+                      src={event.icon}
+                      alt="img"
+                      className="h-full w-full transition-transform duration-700 group-hover:scale-110 aspect-square rounded-lg"
+                      width={500}
+                      height={500}
+                      loader={({ src }) => src}
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col justify-between sm:flex-row sm:items-center">
+                    <div className="mb-4 sm:mb-0">
+                      <h3 className="text-base font-bold text-foreground transition-colors duration-300 group-hover:text-primary sm:text-lg">
+                        {event.title}
+                      </h3>
+                      <div className="mt-2 space-y-1 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
+                          <Clock className="h-3 w-3" /> {event.time}
+                        </div>
+                        <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
+                          <MapPin className="h-3 w-3" />
+                          <span className="line-clamp-1">{event.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-secondary">
+                          <FaCalendar className="h-3 w-3" />
+                          <span className="line-clamp-1">
+                            {new Date(event.date).toDateString()}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
