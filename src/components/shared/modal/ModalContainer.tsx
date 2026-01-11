@@ -16,7 +16,7 @@ export function ModalContainer({
 }: ModalContainerProps) {
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] md:max-w-[500px]">
         <VisuallyHidden>
           <DialogTitle>Mobile Navigation</DialogTitle>
         </VisuallyHidden>

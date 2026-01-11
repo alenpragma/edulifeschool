@@ -10,6 +10,7 @@ export interface SiteSettingsData {
   contact: ContactItem[];
   campuses: Campus[];
   openingHours: OpeningHourss;
+  testimonials: Testimonial[];
 }
 
 export interface Hero {
@@ -46,4 +47,11 @@ export interface OpeningHourss {
   friday: string;
   saturday: string;
   sunday: string;
+}
+
+export interface Testimonial {
+  name: string;
+  title: string;
+  value: string;
+  subtitle: string;
 }

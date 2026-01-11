@@ -3,56 +3,44 @@
 import MainContainer from "@/components/container/MainContainer";
 import HeadingOne from "@/components/shared/heading/HeadingOne";
 import { IGalleryItem } from "@/types/generalType/iamgeGellery";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ImageGallery({ images }: { images: IGalleryItem[] }) {
-  const marqueeImages = [...images, ...images];
-
   return (
     <section className="bg-white py-5 overflow-hidden">
-      <MainContainer className="space-y-5 overflow-hidden">
-        <HeadingOne text="ছবি গ্যালারি" className="text-center" />
-        <motion.div
-          className="flex gap-5"
-          animate={{ x: ["-100%", "0%"] }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-        >
-          {marqueeImages.map((item, index) => (
-            <div
-              key={`top-${item.id}-${index}`}
-              className="min-w-[300px] h-[200px]"
-            >
-              <Image
-                className="w-full h-full object-cover rounded-md"
-                src={item.url}
-                alt="img"
-                width={500}
-                height={500}
-              />
-            </div>
-          ))}
-        </motion.div>
-        <motion.div
-          className="flex gap-5"
-          animate={{ x: ["0%", "-100%"] }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-        >
-          {marqueeImages.map((item, index) => (
-            <div
-              key={`bottom-${item.id}-${index}`}
-              className="min-w-[300px] h-[200px]"
-            >
-              <Image
-                className="w-full h-full object-cover rounded-md"
-                src={item.url}
-                alt="img"
-                width={500}
-                height={500}
-              />
-            </div>
-          ))}
-        </motion.div>
+      <MainContainer>
+        <div className="overflow-hidden space-y-5">
+          <HeadingOne text="ছবি গ্যালারি" className="text-center" />
+
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
+            {images.slice(0, 4).map((item, index) => (
+              <div
+                key={item.id}
+                className="relative w-full aspect-square overflow-hidden rounded-md"
+              >
+                <Image
+                  className="w-full h-full object-cover rounded-md"
+                  src={item.url}
+                  alt="img"
+                  width={500}
+                  height={500}
+                />
+
+                {images.length > 4 && index === 3 && (
+                  <Link
+                    href="/images-gallery"
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 text-white rounded-md"
+                  >
+                    <span className="md:text-xl text-[20px] font-semibold">
+                      View All
+                    </span>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </MainContainer>
     </section>
   );

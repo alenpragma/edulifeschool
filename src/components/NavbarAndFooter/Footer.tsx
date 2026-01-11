@@ -173,8 +173,8 @@ export function Footer({
             }`}
           >
             <h4 className="mb-4 font-bold text-foreground sm:mb-6">Gallery</h4>
-            <div className="grid grid-cols-3 gap-2">
-              {imageGallery.map((item) => (
+            <div className="grid grid-cols-4 gap-2">
+              {imageGallery.slice(0, 6).map((item) => (
                 <div
                   key={item.id}
                   className="group aspect-square overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:z-10"
@@ -198,7 +198,7 @@ export function Footer({
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Copyright EduLife. All Rights Reserved by EduLife IT School
+          &copy; 2025-{new Date().getFullYear()} edulifeitschool.com. All Rights Reserved.
         </div>
       </div>
     </footer>

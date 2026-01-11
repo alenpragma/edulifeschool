@@ -1,3 +1,4 @@
+import { eventDataFetchById } from "@/lib/fetch/siteSettingDataFetch";
 import { Metadata } from "next";
 import EventComponent from "./EventComponent";
 
@@ -14,6 +15,7 @@ type PageProps = {
 
 export default async function EventPage({ params }: PageProps) {
   const { id } = await params;
+  const { data: eventData } = await eventDataFetchById(`/${id}`);
 
-  return <EventComponent />;
+  return <EventComponent eventData={eventData} />;
 }

@@ -1,4 +1,4 @@
-import { UpcomingEventsType } from "@/types/generalType/eventDta";
+import { EventResponseById, UpcomingEventsType } from "@/types/generalType/eventDta";
 import { SiteSettingsResponse } from "@/types/generalType/generalType";
 import { IGalleryResponse } from "@/types/generalType/iamgeGellery";
 import { TeachersApiResponse } from "@/types/generalType/teacherDataType";
@@ -21,6 +21,11 @@ export const teacherDataFetch = async () => {
 };
 export const eventDataFetch = async () => {
   return await getData<UpcomingEventsType>("/upcoming-events", {
+    next: { revalidate: 60 },
+  });
+};
+export const eventDataFetchById = async (id: string) => {
+  return await getData<EventResponseById>(`/upcoming-events${id}`, {
     next: { revalidate: 60 },
   });
 };

@@ -47,7 +47,7 @@ export default function BannerBlog() {
     };
   }, []);
   return (
-    <section>
+    <section id="blog" className="scroll-mt-28">
       <MainContainer>
         <div
           className={`grid gap-4 md:mt-10 mt-3 sm:gap-6 md:grid-cols-3 transition-all duration-700 delay-400 
@@ -59,11 +59,9 @@ export default function BannerBlog() {
               key={index}
               className={cn(
                 "group relative overflow-hidden rounded-xl p-4 text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2",
-                index === 0 &&
-                  "bg-gradient-to-br from-[#062389] to-[#3a4d91]",
+                index === 0 && "bg-gradient-to-br from-[#062389] to-[#3a4d91]",
                 index === 1 && "bg-gradient-to-br from-[#0b598d] to-[#0588E1]",
-                index === 2 &&
-                  " bg-gradient-to-br from-[#062389] to-[#3a4d91]"
+                index === 2 && " bg-gradient-to-br from-[#062389] to-[#3a4d91]"
               )}
             >
               <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

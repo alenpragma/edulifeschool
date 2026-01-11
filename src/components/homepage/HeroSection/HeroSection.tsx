@@ -35,8 +35,9 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
 
   return (
     <section
+      id="home"
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 pt-20 py-3 min-h-screen flex items-center"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 py-3 md:min-h-[100dvh] flex items-center h-auto md:pt-0 pt-20"
     >
       {/* Background Blurs */}
       <div className="absolute top-16 right-0 h-40 w-40 sm:h-64 sm:w-64 rounded-full bg-secondary/20 blur-3xl animate-[float_8s_ease-in-out_infinite]" />

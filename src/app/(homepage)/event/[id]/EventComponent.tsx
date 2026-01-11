@@ -1,8 +1,17 @@
-import MainContainer from "@/components/container/MainContainer";
-import Image from "next/image";
-import { CalendarDays, Clock, MapPin } from "lucide-react";
+"use client";
 
-export default function EventDetailsPage() {
+import MainContainer from "@/components/container/MainContainer";
+import { EventData } from "@/types/generalType/eventDta";
+import { CalendarDays, Clock, MapPin } from "lucide-react";
+import Image from "next/image";
+import React from "react";
+
+export default function EventDetailsPage({
+  eventData,
+}: {
+  eventData: EventData;
+}) {
+  console.log(eventData);
   return (
     <section className="py-20 bg-[#FAFAFA]">
       <MainContainer>
@@ -10,11 +19,11 @@ export default function EventDetailsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-16">
           <div className="relative w-full h-[320px] rounded-3xl overflow-hidden shadow-lg">
             <Image
-              src="https://c8.alamy.com/comp/2B149CM/illustration-of-a-family-day-school-event-with-student-kids-parents-and-teachers-running-down-the-hill-2B149CM.jpg"
+              src={eventData.icon}
               alt="Event Banner"
               fill
               className="object-cover"
-              priority
+              loader={({ src }) => src}
             />
           </div>
 
@@ -23,18 +32,20 @@ export default function EventDetailsPage() {
               Upcoming Event
             </span>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Annual Cultural Programme
+              {eventData.title}
             </h1>
 
             <div className="space-y-3 text-gray-600">
               <p className="flex items-center gap-2">
-                <CalendarDays size={18} /> 12 September, 2026
+                <CalendarDays size={18} />{" "}
+                {new Date(eventData.date).toLocaleDateString()}
               </p>
               <p className="flex items-center gap-2">
-                <Clock size={18} /> 8:00 AM – 10:00 PM
+                <Clock size={18} /> {eventData.time}
               </p>
               <p className="flex items-center gap-2">
-                <MapPin size={18} /> New York 56 Glassford Street, Glasgow
+                <MapPin size={18} />
+                {eventData.location}
               </p>
             </div>
           </div>
@@ -46,16 +57,13 @@ export default function EventDetailsPage() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Event Description
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              Join us for an exciting Annual Cultural Programme filled with
-              performances, creativity, and celebration. This event brings
-              together students, parents, and teachers to showcase cultural
-              diversity through music, dance, art, and drama.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Enjoy a full day of engaging activities, delicious food stalls,
-              and unforgettable moments. Everyone is welcome to be part of this
-              vibrant celebration.
+            <p>
+              {eventData.description.split("\r\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </p>
           </div>
 
@@ -65,19 +73,29 @@ export default function EventDetailsPage() {
             <ul className="space-y-4 text-sm">
               <li className="flex justify-between">
                 <span>Date</span>
-                <span className="font-medium">12 September</span>
+                <span className="font-medium">
+                  {new Date(eventData.date).toLocaleDateString()}
+                </span>
               </li>
               <li className="flex justify-between">
                 <span>Time</span>
-                <span className="font-medium">8:00 AM – 10:00 PM</span>
+                <span className="font-medium">{eventData.time}</span>
               </li>
               <li className="flex justify-between">
                 <span>Location</span>
-                <span className="font-medium">Glasgow</span>
+                <span className="font-medium">{eventData.location}</span>
               </li>
               <li className="flex justify-between">
                 <span>Entry</span>
-                <span className="font-medium">Free</span>
+                <span className="font-medium">
+                  {eventData.entryFee > 0 ? (
+                    <span>
+                      {Number(eventData.entryFee).toLocaleString()} Tk
+                    </span>
+                  ) : (
+                    "Free"
+                  )}
+                </span>
               </li>
             </ul>
           </div>

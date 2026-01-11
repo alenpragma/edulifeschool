@@ -71,8 +71,9 @@ export function CoursesSection({
 
   return (
     <section
+      id="event"
       ref={sectionRef}
-      className="bg-gradient-to-b from-slate-50 to-white py-5"
+      className="bg-gradient-to-b from-slate-50 to-white py-5 scroll-mt-28"
     >
       <MainContainer>
         <div
@@ -86,7 +87,7 @@ export function CoursesSection({
 
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           {events.map((event, i) => (
-            <Link href="/event/123" key={i}>
+            <Link href={`/event/${event.id}`} key={i} prefetch={true}>
               <div
                 className={`group flex flex-row items-center overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 p-3 gap-5 ${
                   isVisible

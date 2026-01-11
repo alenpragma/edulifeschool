@@ -27,7 +27,7 @@ export default async function HomePage() {
     <div className="bg-white overflow-hidden">
       <HeroSection heroData={data.hero} />
       <BannerBlog />
-      <StartSection />
+      <StartSection testimonials={data.testimonials} />
       <ImageGallery images={images} />
       <OpeningHours openingHours={data.openingHours} />
       <FeaturesSection />
@@ -36,10 +36,8 @@ export default async function HomePage() {
   );
 }
 
-
-
-// navbar route id diye korte hobe.
-// testimonials dynamic korte hobe
-// event dynamic kore korte hobe 
+// navbar route id diye korte hobe. - done
+// testimonials dynamic korte hobe - done
+// event dynamic kore korte hobe - done
 // gallery image click korle modal view hobe
-// footer er galery image ta slice kore korte hobe
+// footer er galery image ta slice kore korte hobe - done
