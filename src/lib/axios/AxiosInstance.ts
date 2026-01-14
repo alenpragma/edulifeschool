@@ -1,6 +1,5 @@
 import { config } from "@/config";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 // Generic error types
 export type IGenericErrorMessage = {
@@ -24,13 +23,13 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.request.use((config) => {
-  const token = Cookies.get(config.tokenName!);
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// axiosInstance.interceptors.request.use((config) => {
+//   const token = Cookies.get(config.tokenName!);
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return config;
+// });
 
 // ✅ Response interceptor
 axiosInstance.interceptors.response.use(
