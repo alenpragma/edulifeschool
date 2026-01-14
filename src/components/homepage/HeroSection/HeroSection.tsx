@@ -96,7 +96,8 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
                 width={600}
                 height={600}
                 priority
-                loader={({ src }) => src}
+                unoptimized
+                // loader={({ src }) => src}
               />
             </div>
 
