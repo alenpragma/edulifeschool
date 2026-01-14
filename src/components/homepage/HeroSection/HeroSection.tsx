@@ -90,7 +90,7 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
           >
             <div className="relative z-10 mx-auto md:max-w-[80%] w-full overflow-hidden rounded-3xl border-8 sm:border-12 border-white shadow-2xl transition-all duration-500 hover:scale-105 hover:rotate-1">
               <Image
-                src={heroImage}
+                src={'https://api.edulifeitschool.com/uploads/site-settings/gallery-92261118-17c2-46c6-b91c-c2b5c1b45275.jpg'}
                 alt="hero-img"
                 className="w-full h-auto object-cover"
                 width={600}
