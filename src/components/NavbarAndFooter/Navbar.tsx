@@ -60,7 +60,6 @@ const Navbar = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const token = Cookies.get(config.tokenName!);
   const router = useRouter();
   useEffect(() => {
     if (isDesktop) {
@@ -241,15 +240,13 @@ const Navbar = ({
                 />
               </Link>
 
-              {!token && (
-                <div className="flex items-center gap-2 md:hidden justify-end">
-                  <Link href="/contact">
-                    <Button className="text-white bg-main/80 border border-[#ffffff6c] px-4 py-1 h-fit rounded hover:bg-main hover:text-white cursor-pointer">
-                      Contact-Us
-                    </Button>
-                  </Link>
-                </div>
-              )}
+              <div className="flex items-center gap-2 md:hidden justify-end">
+                <Link href="/contact">
+                  <Button className="text-white bg-main/80 border border-[#ffffff6c] px-4 py-1 h-fit rounded hover:bg-main hover:text-white cursor-pointer">
+                    Contact-Us
+                  </Button>
+                </Link>
+              </div>
             </div>
             <div className="hidden md:flex items-center gap-3">
               <div className="flex items-center gap-3">

@@ -48,7 +48,6 @@ const NavbarTwo = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const token = Cookies.get(config.tokenName!);
 
   useEffect(() => {
     if (isDesktop) {
@@ -68,11 +67,6 @@ const NavbarTwo = () => {
   const isActive = (path: string) => {
     if (path === "/") return pathname === path;
     return pathname.startsWith(path);
-  };
-
-  const handleLogout = () => {
-    window.location.reload();
-    Cookies.remove(config.tokenName!);
   };
 
   return (
@@ -136,16 +130,13 @@ const NavbarTwo = () => {
               />
             </Link>
 
-            {/* Sign Up button for mobile */}
-            {!token && (
-              <div className="flex items-center gap-2 md:hidden">
-                <Link href="/sign-up">
-                  <Button className="text-white bg-main border border-[#ffffff6c] hover:text-primary px-4 py-1 h-fit rounded hover:bg-main cursor-pointer">
-                    Sign Up
-                  </Button>
-                </Link>
-              </div>
-            )}
+            <div className="flex items-center gap-2 md:hidden">
+              <Link href="/sign-up">
+                <Button className="text-white bg-main border border-[#ffffff6c] hover:text-primary px-4 py-1 h-fit rounded hover:bg-main cursor-pointer">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </MainContainer>
