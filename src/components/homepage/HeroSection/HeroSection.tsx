@@ -64,8 +64,7 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              {/* {subtitle} */}
-              "Creating Future Leadeersss"
+              {subtitle}
             </p>
 
             <div
@@ -97,7 +96,8 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
                 width={600}
                 height={600}
                 priority
-                loader={({ src }) => src}
+                unoptimized
+                // loader={({ src }) => src}
               />
             </div>
 
