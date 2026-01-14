@@ -64,8 +64,7 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              {/* {subtitle} */}
-              "Creating Future Leadeersss"
+              {subtitle}
             </p>
 
             <div
