@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from "react";
 
 export function HeroSection({ heroData }: { heroData: Hero }) {
   const { heroImage, subtitle, title } = heroData || {};
-  console.log("heroimage", heroImage);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -90,14 +89,12 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
           >
             <div className="relative z-10 mx-auto md:max-w-[80%] w-full overflow-hidden rounded-3xl border-8 sm:border-12 border-white shadow-2xl transition-all duration-500 hover:scale-105 hover:rotate-1">
               <Image
-                src={'https:/api.edulifeitschool.com/uploads/site-settings/hero-image.png'}
-                alt="hero-img"
                 className="w-full h-auto object-cover"
+                src={heroImage}
+                alt="img"
                 width={600}
                 height={600}
-                priority
                 unoptimized
-                // loader={({ src }) => src}
               />
             </div>
 
