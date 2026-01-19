@@ -18,7 +18,7 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -90,11 +90,13 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
             <div className="relative z-10 mx-auto md:max-w-[80%] w-full overflow-hidden rounded-3xl border-8 sm:border-12 border-white shadow-2xl transition-all duration-500 hover:scale-105 hover:rotate-1">
               <Image
                 className="w-full h-auto object-cover"
-                src={heroImage}
+                src={
+                  "https://api.edulifeitschool.com/uploads/site-settings/hero-image.jpg"
+                }
                 alt="img"
                 width={600}
                 height={600}
-                priority
+                unoptimized
               />
             </div>
 

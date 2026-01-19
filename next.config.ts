@@ -1,12 +1,31 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+// const nextConfig: NextConfig = {
+//   // eslint: {
+//   //   ignoreDuringBuilds: true,
+//   // },
+//   typescript: {
+//     ignoreBuildErrors: true,
+//   },
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: "http",
+//         hostname: "**",
+//       },
+//       {
+//         protocol: "https",
+//         hostname: "**",
+//       },
+//     ],
+//   },
+// };
+
+// export default nextConfig;
+
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -15,10 +34,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "api.edulifeitschool.com",
+        pathname: "/uploads/**",
       },
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

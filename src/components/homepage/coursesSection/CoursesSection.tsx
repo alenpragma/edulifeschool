@@ -130,7 +130,6 @@ export function CoursesSection({
                       className="h-full w-full transition-transform duration-700 group-hover:scale-110 aspect-square rounded-lg"
                       width={500}
                       height={500}
-                      loader={({ src }) => src}
                     />
                   </div>
                   <div className="flex flex-1 flex-col justify-between sm:flex-row sm:items-center">
