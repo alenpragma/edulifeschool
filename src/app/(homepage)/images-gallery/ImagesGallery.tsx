@@ -70,7 +70,7 @@ export default function ImagesGallery({ images }: { images: IGalleryItem[] }) {
                   alt="img"
                   width={500}
                   height={500}
-                  loader={({ src }) => src}
+                  unoptimized
                 />
               </button>
             ))}
