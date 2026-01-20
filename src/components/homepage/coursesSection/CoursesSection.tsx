@@ -74,8 +74,8 @@ export function CoursesSection({
                 }`}
                 style={{ transitionDelay: `${(i + 4) * 100}ms` }}
               >
-                <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 p-5">
-                  <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-8 group-hover:shadow-3xl sm:border-8">
+                <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 md:p-5 p-1">
+                  <div className="relative h-full w-full overflow-hidden rounded-t-xl border-t-4 border-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-8 group-hover:shadow-3xl sm:border-8">
                     <Image
                       src={teacher.profilePicture}
                       alt="img"
@@ -92,7 +92,7 @@ export function CoursesSection({
                   <h3 className="relative truncate md:text-lg text-[12px] font-black transition-transform duration-300 group-hover:scale-110 sm:text-xl">
                     {teacher.name}
                   </h3>
-                  <p className="relative text-sm font-medium opacity-95 truncate">
+                  <p className="relative md:text-[16px] text-[10px] font-medium opacity-95 truncate">
                     {teacher.qualification}
                   </p>
                 </div>
