@@ -25,7 +25,6 @@ export default function ImageGallery({ images }: { images: IGalleryItem[] }) {
                   alt="img"
                   width={500}
                   height={500}
-                  unoptimized
                 />
 
                 {images.length > 4 && index === 3 && (

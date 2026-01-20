@@ -23,7 +23,6 @@ export default function EventDetailsPage({
               alt="Event Banner"
               fill
               className="object-cover"
-              loader={({ src }) => src}
             />
           </div>
 
