@@ -94,7 +94,6 @@ export function HeroSection({ heroData }: { heroData: Hero }) {
                 alt="img"
                 width={600}
                 height={600}
-                unoptimized
               />
             </div>
 

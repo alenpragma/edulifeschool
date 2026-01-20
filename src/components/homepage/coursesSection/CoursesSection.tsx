@@ -80,7 +80,6 @@ export function CoursesSection({
                       src={teacher.profilePicture}
                       alt="img"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loader={({ src }) => src}
                       width={500}
                       height={500}
                     />
@@ -130,7 +129,6 @@ export function CoursesSection({
                       className="h-full object-cover w-full transition-transform duration-700 group-hover:scale-110 aspect-square rounded-lg"
                       width={500}
                       height={500}
-                      unoptimized
                     />
                   </div>
                   <div className="flex flex-1 flex-col justify-between sm:flex-row sm:items-center">
