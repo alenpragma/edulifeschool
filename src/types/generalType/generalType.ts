@@ -11,6 +11,9 @@ export interface SiteSettingsData {
   campuses: Campus[];
   openingHours: OpeningHourss;
   testimonials: Testimonial[];
+  highlights: Highlights;
+  features: Features;
+  whyChooseUs: WhyChooseUs;
 }
 
 export interface Hero {
@@ -54,4 +57,40 @@ export interface Testimonial {
   title: string;
   value: string;
   subtitle: string;
+}
+
+export interface Highlights {
+  highlight1: HighlightItem;
+  highlight2: HighlightItem;
+  highlight3: HighlightItem;
+}
+
+export interface HighlightItem {
+  title: string;
+  description: string;
+}
+
+export interface Features {
+  feature1: FeatureItem;
+  feature2: FeatureItem;
+  feature3: FeatureItem;
+  feature4: FeatureItem;
+  feature5: FeatureItem;
+  feature6: FeatureItem;
+}
+
+export interface FeatureItem {
+  title: string;
+  description: string;
+}
+
+export interface WhyChooseUs {
+  title: string;
+  description: string;
+  bannerImage: string;
+  points: WhyChoosePoint[];
+}
+
+export interface WhyChoosePoint {
+  description: string;
 }
