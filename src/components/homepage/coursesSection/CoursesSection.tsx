@@ -2,7 +2,6 @@
 
 import MainContainer from "@/components/container/MainContainer";
 import HeadingOne from "@/components/shared/heading/HeadingOne";
-import { Images } from "@/lib/store/images";
 import { EventItem } from "@/types/generalType/eventDta";
 import { Teacher } from "@/types/generalType/teacherDataType";
 import { Clock, MapPin } from "lucide-react";
@@ -63,19 +62,19 @@ export function CoursesSection({
             <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" />
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-5 md:grid-cols-4 grid-cols-2">
+          <div className="grid gap-3 lg:grid-cols-5 md:grid-cols-4 grid-cols-2">
             {teacherData.map((teacher, i) => (
               <div
                 key={teacher.id}
-                className={`group overflow-hidden rounded-3xl bg-card text-center shadow-xl transition-all duration-500 hover:shadow-3xl hover:-translate-y-3 hover:rotate-1 ${
+                className={`group overflow-hidden text-center shadow-xl p-0.5 rounded-lg transition-all duration-500 hover:shadow-3xl hover:-translate-y-3 hover:rotate-1 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
                 style={{ transitionDelay: `${(i + 4) * 100}ms` }}
               >
-                <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 md:p-5 p-1">
-                  <div className="relative h-full w-full overflow-hidden rounded-t-xl border-t-4 border-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-8 group-hover:shadow-3xl sm:border-8">
+                <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-t-md overflow-hidden">
+                  <div className="relative h-full w-full overflow-hidden  shadow-2xl transition-all duration-500 group-hover:scale-105">
                     <Image
                       src={teacher.profilePicture}
                       alt="img"
@@ -87,7 +86,7 @@ export function CoursesSection({
                   </div>
                 </div>
                 <div
-                  className={`relative overflow-hidden md:p-5 p-3 text-white sm:p-6 bg-[#3020b7]`}
+                  className={`relative overflow-hidden md:p-5 p-3 text-white bg-[#3020b7] rounded-b-md`}
                 >
                   <h3 className="relative truncate md:text-lg text-[12px] font-black transition-transform duration-300 group-hover:scale-110 sm:text-xl">
                     {teacher.name}
