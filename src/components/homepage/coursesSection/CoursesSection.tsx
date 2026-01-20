@@ -63,7 +63,7 @@ export function CoursesSection({
             <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" />
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-6 lg:grid-cols-5 md:grid-cols-4 grid-cols-2">
             {teacherData.map((teacher, i) => (
               <div
                 key={teacher.id}
@@ -87,12 +87,12 @@ export function CoursesSection({
                   </div>
                 </div>
                 <div
-                  className={`relative overflow-hidden p-5 text-white sm:p-6 bg-[#3020b7]`}
+                  className={`relative overflow-hidden md:p-5 p-3 text-white sm:p-6 bg-[#3020b7]`}
                 >
-                  <h3 className="relative text-lg font-black transition-transform duration-300 group-hover:scale-110 sm:text-xl">
+                  <h3 className="relative truncate md:text-lg text-[12px] font-black transition-transform duration-300 group-hover:scale-110 sm:text-xl">
                     {teacher.name}
                   </h3>
-                  <p className="relative text-sm font-medium opacity-95">
+                  <p className="relative text-sm font-medium opacity-95 truncate">
                     {teacher.qualification}
                   </p>
                 </div>

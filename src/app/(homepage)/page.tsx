@@ -26,9 +26,12 @@ export default async function HomePage() {
   return (
     <div className="bg-white overflow-hidden">
       <HeroSection heroData={data.hero} />
-      <BannerBlog />
+      <BannerBlog bannerBlog={data.highlights} />
       <StartSection testimonials={data.testimonials} />
-      <FeaturesSection />
+      <FeaturesSection
+        featureData={data.features}
+        whyChoosePoint={data.whyChooseUs}
+      />
       <CoursesSection teacherData={teacherData} events={events} />
       <ImageGallery images={images} />
       <OpeningHours openingHours={data.openingHours} />
