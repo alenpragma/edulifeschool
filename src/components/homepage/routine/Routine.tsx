@@ -51,8 +51,8 @@ export default function OpeningHours({
                 {formatDay(day)}
               </span>
 
-              <span className="text-gray-600">
-                {openingHours[day as keyof OpeningHourss] ?? "Closed"}
+              <span className="text-gray-800">
+                {openingHours[day as keyof OpeningHourss] || "Off Day"}
               </span>
             </div>
           ))}
