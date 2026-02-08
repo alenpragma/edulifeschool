@@ -79,7 +79,6 @@ export function CoursesSection({
                       src={teacher.profilePicture}
                       alt="img"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loader={({ src }) => src}
                       width={500}
                       height={500}
                     />
